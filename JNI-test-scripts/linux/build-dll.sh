@@ -31,7 +31,7 @@ rm -f ./*.so
 
 
 CPP_DIR="$HOME_DIR/net/adoptopenjdk/bumblebench/jni/c++/"
-export INC_PATH=" -I$HOME_DIR -I$CPP_DIR -I$SDK_DIR/include/zos -I$SDK_DIR/include/ "
+export INC_PATH=" -I${HOME_DIR} -I${CPP_DIR} -I$SDK_DIR/include/zos -I${SDK_DIR}/include/ "
 
 #
 # Generate header files for our JNI Java class
@@ -66,10 +66,11 @@ mv $HOME_DIR/*.h $CPP_DIR/
 CPP_FILES=`find . | grep '\.cpp' | tr '\n' ' '`
 
 CXXFLAGS="-shared -v -fPIC -std=c++11 -O1"
-INC_PATH="-I$CPP_DIR -I$JDK_HOME/include/ -I$JDK_HOME/include/linux "
+INC_PATH="-I${CPP_DIR} -I${JDK_HOME}/include/ -I${JDK_HOME}/include/linux "
 
 
 # use g++. gcc requires -lstdc++
+echo $INC_PATH
 g++ $CXXFLAGS -o libjnibench.so $INC_PATH $CPP_FILES
 
 mv $CPP_DIR/*.so $HOME_DIR/
