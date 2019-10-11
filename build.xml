@@ -164,6 +164,15 @@ execute a build.
 			 includeantruntime="false">
 		</javac>
 
+		<!-- JSON -->
+		<javac srcdir="${src-json}" 
+             debug="on" 
+             destdir=""
+             source="1.8"
+             target="1.8"
+			 includeantruntime="false">
+		</javac>
+		
 		<!-- math -->
 		<javac srcdir="${src-math}" 
              debug="on" 
